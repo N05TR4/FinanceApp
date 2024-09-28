@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FinanceApp.Domain.Entities
 {
-    public sealed class CategoriaIngreso : BaseCategoria
+    public sealed class Tipo : BaseCM
     {
         [Key]
-        public int CategoriaIngresoID { get; set; }
+        public int TipoID { get; set; }
     }
 }
