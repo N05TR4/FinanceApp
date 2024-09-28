@@ -4,6 +4,7 @@ using FinanceApp.API.Models.MetodoPago;
 using FinanceApp.API.Models.Tipo;
 using FinanceApp.API.Models.Usuario;
 using FinanceApp.Domain.Entities;
+using FinanceApp.Domain.Models;
 
 namespace FinanceApp.API.Mappings
 {
@@ -27,6 +28,7 @@ namespace FinanceApp.API.Mappings
             //Usuario
             CreateMap<UsuarioCreate, Usuario>();
             CreateMap<UsuarioUpdate, Usuario>();
+            CreateMap<Usuario, UsuarioModels>();
         }
     }
 }

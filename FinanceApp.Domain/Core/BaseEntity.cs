@@ -10,6 +10,8 @@ namespace FinanceApp.Domain.Core
         public DateTime Fecha { get; set; }
         public string? Descripcion { get; set; }
         public bool Recurrente { get; set; }
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
+        public DateTime? FechaModificacion { get; set; }
     }
 }

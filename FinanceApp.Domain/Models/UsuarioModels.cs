@@ -9,6 +9,8 @@ namespace FinanceApp.Domain.Models
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Contraseña { get; set; }
-        public DateTime FechaRegistro { get; set; } = DateTime.Now;
+        public bool Estado { get; set; } = true;
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
+        public DateTime? FechaModificacion { get; set; }
     }
 }

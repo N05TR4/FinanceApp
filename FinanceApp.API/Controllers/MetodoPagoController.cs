@@ -127,6 +127,9 @@ namespace FinanceApp.API.Controllers
                 // Mapear los cambios
                 _mapper.Map(metodoPago, exist);
 
+                //Actualizar fecha de modificacion
+                exist.FechaModificacion = DateTime.Now;
+
                 //guardar los cambios
                 await _metodoPagoRepository.Update(exist);
 

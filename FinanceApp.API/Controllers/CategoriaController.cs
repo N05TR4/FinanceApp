@@ -4,12 +4,14 @@ using FinanceApp.Domain.Entities;
 using FinanceApp.Domain.Interfaces;
 using FinanceApp.Infraestructure.Context;
 using FinanceApp.Infraestructure.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FinanceApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriaController : ControllerBase
@@ -139,6 +141,9 @@ namespace FinanceApp.API.Controllers
 
                 // mapear los cambios
                 _mapper.Map(categoria, exist);
+
+                //Actualizar fecha de modificacion
+                exist.FechaModificacion = DateTime.Now;
 
                 // guardar los cambios
                 await _categoriaRepository.Update(exist);

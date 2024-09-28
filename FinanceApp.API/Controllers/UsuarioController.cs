@@ -124,6 +124,9 @@ namespace FinanceApp.API.Controllers
                 //Mapear los cambios
                 _mapper.Map(usuario, exist);
 
+                //Actualizar fecha de modificacion
+                exist.FechaModificacion = DateTime.Now;
+
                 //guardar los cambios
                 await _usuarioRepository.Update(exist);
 
