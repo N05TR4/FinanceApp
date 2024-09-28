@@ -2,7 +2,11 @@
 
 namespace FinanceApp.Infraestructure.Exceptions
 {
-    internal class UsuarioException
+    public class UsuarioException : Exception
     {
+        public UsuarioException(string message) : base(message)
+        {
+            
+        }
     }
 }
