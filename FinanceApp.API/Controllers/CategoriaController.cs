@@ -4,6 +4,7 @@ using FinanceApp.Domain.Entities;
 using FinanceApp.Domain.Interfaces;
 using FinanceApp.Infraestructure.Context;
 using FinanceApp.Infraestructure.Exceptions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceApp.API.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriaController : ControllerBase

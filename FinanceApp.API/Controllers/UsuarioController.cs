@@ -3,6 +3,7 @@ using FinanceApp.API.Models.Usuario;
 using FinanceApp.Domain.Entities;
 using FinanceApp.Domain.Interfaces;
 using FinanceApp.Infraestructure.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
