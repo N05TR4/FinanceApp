@@ -169,15 +169,20 @@ namespace FinanceApp.API.Controllers
                     return NotFound(new { message = $"El Usuario con el ID {usuarioId} no contiene ingresos recurrentes" });
                 }
 
-                return Ok(new { totalRecurrente = totalRecurrente });
+                return Ok(new { Total_Recurrente = totalRecurrente });
 
 
             }
-            catch (Exception)
+            catch (IngresoException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
             {
 
-                throw;
+                return StatusCode(500, new { message = "Error interno del servidor", details = ex.Message });
             }
+        
         }
 
         // POST api/<IngresoController>
@@ -212,7 +217,7 @@ namespace FinanceApp.API.Controllers
         }
 
         // PUT api/<IngresoController>/5
-        [HttpPut("updateIngreso{id}")]
+        [HttpPut("updateIngreso/{id}")]
         public async Task<IActionResult> UpdateIngreso(int id, [FromBody] IngresoUpdate ingresoUpdate)
         {
             try
@@ -240,10 +245,14 @@ namespace FinanceApp.API.Controllers
 
                 return Ok();
             }
-            catch (Exception)
+            catch (IngresoException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
             {
 
-                throw;
+                return StatusCode(500, new { message = "Error interno del servidor", details = ex.Message });
             }
         }
 

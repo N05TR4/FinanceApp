@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FinanceApp.API.Models.Categoria;
+using FinanceApp.API.Models.Gasto;
 using FinanceApp.API.Models.Ingreso;
 using FinanceApp.API.Models.MetodoPago;
 using FinanceApp.API.Models.Tipo;
@@ -35,6 +36,11 @@ namespace FinanceApp.API.Mappings
             CreateMap<IngresoCreate, Ingreso>();
             CreateMap<IngresoUpdate, Ingreso>();
             CreateMap<Ingreso, IngresoModels>();
+
+            //Gasto
+            CreateMap<GastoCreate, Gasto>();
+            CreateMap<GastoUpdate, Gasto>();
+            CreateMap<Gasto, GastoModels>();
         }
     }
 }

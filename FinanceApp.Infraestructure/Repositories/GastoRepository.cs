@@ -6,6 +6,7 @@ using FinanceApp.Domain.Models;
 using FinanceApp.Infraestructure.Context;
 using FinanceApp.Infraestructure.Core;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 
 namespace FinanceApp.Infraestructure.Repositories
@@ -55,17 +56,12 @@ namespace FinanceApp.Infraestructure.Repositories
             try
             {
                 var tipo = "Gasto";
-                var result = await _dbContext.Database.ExecuteSqlRawAsync(
-                "SELECT dbo.fn_TotalRecurrente({0}, {1})",
-                usuarioId, tipo);
+                var result = await _dbContext.Database
+                    .SqlQueryRaw<TotalRecurrenteResult>("SELECT dbo.fn_TotalRecurrente({0}, {1}) AS TotalRecurrente", usuarioId, tipo)
+                    .FirstOrDefaultAsync();
 
-                if(result < 0)
-                {
-                    throw new GastoException($"El total recurrente de gastos para el usuario con ID {usuarioId} no puede ser negativo.");
-                }
-
-                return result;
-            }catch (DbUpdateException ex)
+                return result?.TotalRecurrente ?? 0;
+            }catch (SqlException ex)
             {
                 throw new GastoException($"Error en la base de datos al obtener el total recurrente para el usuario con ID {usuarioId}: {ex.Message}");
             }
