@@ -1,17 +1,13 @@
-﻿
-
-namespace FinanceApp.Domain.Core
+﻿namespace FinanceApp.API.Models.Ingreso
 {
-    public abstract class BaseEntity
+    public class IngresoUpdate
     {
+        public int CategoriaIngresoID { get; set; }
         public int UsuarioID { get; set; }
         public int MetodoPagoID { get; set; }
         public decimal Monto { get; set; }
         public DateTime Fecha { get; set; }
         public string? Descripcion { get; set; }
         public bool Recurrente { get; set; } = false;
-        public bool Estado { get; set; } = true;
-        public DateTime FechaCreacion { get; set; } = DateTime.Now;
-        public DateTime? FechaModificacion { get; set; }
     }
 }

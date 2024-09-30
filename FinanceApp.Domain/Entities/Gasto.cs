@@ -9,7 +9,7 @@ namespace FinanceApp.Domain.Entities
     {
         [Key]
         public int GastoID { get; set; }
-        public int CategoriaGastoID { get; set; }
+        public int CategoriaID { get; set; }
 
     }
 }
